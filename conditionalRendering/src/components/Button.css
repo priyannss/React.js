@@ -1,0 +1,112 @@
+/* Shared button styling */
+.btn {
+  --btn-bg: linear-gradient(135deg, #6366f1, #4f46e5);
+  --btn-bg-hover: linear-gradient(135deg, #818cf8, #6366f1);
+  --btn-bg-active: linear-gradient(135deg, #4f46e5, #4338ca);
+  --btn-color: #ffffff;
+  --btn-shadow: 0 4px 12px -2px rgba(79,70,229,0.4), 0 2px 4px rgba(0,0,0,0.06);
+  --btn-shadow-hover: 0 6px 18px -2px rgba(79,70,229,0.5), 0 3px 6px rgba(0,0,0,0.08);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .9rem 2.1rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--btn-color);
+  background: var(--btn-bg);
+  border: none;
+  border-radius: 0.875rem;
+  cursor: pointer;
+  box-shadow: var(--btn-shadow);
+  transition: background .35s, box-shadow .25s, transform .18s, filter .35s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn::after { /* subtle inner glow */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px; /* border simulation */
+  background: linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,0));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: .6;
+}
+
+.btn:hover {
+  background: var(--btn-bg-hover);
+  box-shadow: var(--btn-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  background: var(--btn-bg-active);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px -2px rgba(79,70,229,0.55), 0 2px 4px rgba(0,0,0,0.12);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #c7d2fe;
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  filter: grayscale(.4) brightness(.9);
+  opacity: .75;
+  transform: none;
+}
+
+/* Login theme variant */
+.btn-login {
+  --btn-bg: linear-gradient(135deg, #10b981, #059669);
+  --btn-bg-hover: linear-gradient(135deg, #34d399, #10b981);
+  --btn-bg-active: linear-gradient(135deg, #059669, #047857);
+  --btn-shadow: 0 4px 12px -2px rgba(16,185,129,0.45), 0 2px 4px rgba(0,0,0,0.06);
+  --btn-shadow-hover: 0 6px 18px -2px rgba(16,185,129,0.55), 0 3px 6px rgba(0,0,0,0.08);
+}
+
+/* Logout (danger-ish) variant */
+.btn-logout {
+  --btn-bg: linear-gradient(135deg, #ef4444, #dc2626);
+  --btn-bg-hover: linear-gradient(135deg, #f87171, #ef4444);
+  --btn-bg-active: linear-gradient(135deg, #dc2626, #b91c1c);
+  --btn-shadow: 0 4px 12px -2px rgba(239,68,68,0.45), 0 2px 4px rgba(0,0,0,0.06);
+  --btn-shadow-hover: 0 6px 18px -2px rgba(239,68,68,0.55), 0 3px 6px rgba(0,0,0,0.08);
+}
+
+/* Fancy subtle sheen on hover */
+.btn:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 45%, transparent 60%);
+  background-size: 250% 100%;
+  border-radius: inherit;
+  animation: sheen 1.2s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes sheen {
+  0% { background-position: 200% 0; opacity: 0; }
+  25% { opacity: 1; }
+  100% { background-position: -50% 0; opacity: 0; }
+}
+
+/* Optional subtle entrance animation utility */
+.fade-in-rise {
+  opacity: 0;
+  transform: translateY(6px) scale(.985);
+  animation: fadeRise .5s cubic-bezier(.4,.13,.22,.99) forwards;
+}
+@keyframes fadeRise {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
