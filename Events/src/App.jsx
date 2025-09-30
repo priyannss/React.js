@@ -12,6 +12,16 @@ import { useState } from "react";
 // solution write logic in a function and pass reference of the function in the event
 
 
+// when you are using many nested elements(div) and every one is having onClick event so when you click on 
+// the most inner one element then onClick proprty of that div will hit and then it will hit for the outer one 
+// and then the next outer one and so on (in dom tree)
+// and this is called event bubbling
+// so to prevent this means if you want to hit for only the clicked one
+// use e.stopPropagation();
+// just like you use e.preventDefault() in case of form submit to prevent the default behaviour of browser for clearing the form fields
+
+
+
 
 function App() {
   const [name, setName] = useState("");
